@@ -1,5 +1,6 @@
 package com.example.anupo.seboapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,13 +20,19 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.home:
-                Toast.makeText(this, "You selected start!", Toast.LENGTH_LONG).show();
+                Intent homeIntent=new Intent(this,MainActivity.class);
+                startActivity(homeIntent);
+                //Toast.makeText(this, "You selected start!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.login:
-                Toast.makeText(this, "You selected stop!", Toast.LENGTH_LONG).show();
+                Intent loginIntent=new Intent(this,LoginActivity.class);
+                startActivity(loginIntent);
+                //Toast.makeText(this, "You selected stop!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.book:
-                Toast.makeText(this, "You selected help!", Toast.LENGTH_LONG).show();
+                Intent booksIntent=new Intent(this,BooksActivity.class);
+                startActivity(booksIntent);
+               // Toast.makeText(this, "You selected help!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.exit:
                 Toast.makeText(this, "You selected help!", Toast.LENGTH_LONG).show();
