@@ -6,27 +6,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-Button loginButton;
+public class ConfirmationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        loginButton= findViewById(R.id.buttonLogin);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent loginIntent=new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(loginIntent);
-            }
-        });
+        setContentView(R.layout.activity_confirmation);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -37,7 +25,7 @@ Button loginButton;
                 //Toast.makeText(this, "You selected start!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.login:
-                Intent loginIntent=new Intent(MainActivity.this,LoginActivity.class);
+                Intent loginIntent=new Intent(this,LoginActivity.class);
                 startActivity(loginIntent);
                 Toast.makeText(this, "You selected login!", Toast.LENGTH_LONG).show();
                 break;

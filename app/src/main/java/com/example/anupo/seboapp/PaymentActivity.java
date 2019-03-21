@@ -10,23 +10,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-Button loginButton;
-
+public class PaymentActivity extends AppCompatActivity {
+Button confitmButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        loginButton= findViewById(R.id.buttonLogin);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_payment);
+        confitmButton=findViewById(R.id.buttonConfirm);
+        confitmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent loginIntent=new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(loginIntent);
+                Intent confitmIntent=new Intent(PaymentActivity.this,ConfirmationActivity.class);
+                startActivity(confitmIntent);
             }
         });
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -37,7 +35,7 @@ Button loginButton;
                 //Toast.makeText(this, "You selected start!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.login:
-                Intent loginIntent=new Intent(MainActivity.this,LoginActivity.class);
+                Intent loginIntent=new Intent(this,LoginActivity.class);
                 startActivity(loginIntent);
                 Toast.makeText(this, "You selected login!", Toast.LENGTH_LONG).show();
                 break;
