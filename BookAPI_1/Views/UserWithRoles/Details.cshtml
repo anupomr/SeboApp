@@ -1,0 +1,42 @@
+﻿@model BookAPI.Models.UserWithRole
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserWithRole</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.uEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.uEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.uPhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.uPhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.uId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
