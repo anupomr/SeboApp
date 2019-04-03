@@ -69,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
         //for login
         //new HTTPAsyncTask().execute("http://bookapi-dev.us-east-1.elasticbeanstalk.com/api/UserWithRoles/login");
         //for register
-        new HTTPAsyncTask().execute("http://bookapi-dev.us-east-1.elasticbeanstalk.com/api/UserWithRoles/RegisterUser");
-        res.setText("test");
+        //new HTTPAsyncTask().execute("http://bookapi-dev.us-east-1.elasticbeanstalk.com/api/UserWithRoles/RegisterUser");
+       // res.setText("test");
+         //for update profile (this is mandatory before any posting of book for selling or want to buy any book)
+        new HTTPAsyncTask().execute("http://bookapi-dev.us-east-1.elasticbeanstalk.com/api/Users/UpdateProfile");
     }
     private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
         @Override
@@ -135,10 +137,35 @@ public class MainActivity extends AppCompatActivity {
           //  jsonObject.accumulate("password", "Cen@123");
             //for login--end
             //for register--begin
-                jsonObject.accumulate("uEmail", "a@anu.com");
-              jsonObject.accumulate("password", "Cen@123");
-            jsonObject.accumulate("uPhoneNumber", "123456");
+             //   jsonObject.accumulate("uEmail", "a@anu.com");
+             // jsonObject.accumulate("password", "Cen@123");
+            //jsonObject.accumulate("uPhoneNumber", "123456");
             //for register--end
+             //without user profile, no one can buy and sell book
+            //for inserting user profile--begin
+            //which have value that are mandatory field
+            jsonObject.accumulate("userId", "0");
+            jsonObject.accumulate("userName", "shila1");
+            jsonObject.accumulate("firstName", "shila");
+            jsonObject.accumulate("middleName", "mn");
+            jsonObject.accumulate("lastName", "das");
+            jsonObject.accumulate("userType", "1"); //this is from one static drop down list. here i prvide c# code for this drop down list
+            /*  List<SelectListItem> UserTypeList = new List<SelectListItem>() {
+                new SelectListItem { Text = "Student", Value = "1"},
+                new SelectListItem { Text = "Graduated", Value = "2"},
+                new SelectListItem { Text = "Business", Value = "3"} };
+            * */
+            //jsonObject.accumulate("Address", "");
+            jsonObject.accumulate("age", "25");
+            jsonObject.accumulate("email", "sa@s.com"); //this email should be login user email, any user can update only self profile
+            jsonObject.accumulate("phone", "12345"); 
+            jsonObject.accumulate("creditcard", "12345");
+            jsonObject.accumulate("creditcardName", "shila");
+            jsonObject.accumulate("localizationId", "1"); //this is from dropdown
+            jsonObject.accumulate("institutionBranchId", "1");//this is from dropdown . this dropdown list is depended on anoother dropdownlist Institution
+            jsonObject.accumulate("isBlocked", "false"); //always put false
+            //for inserting user profile--end
+
             return jsonObject;
         }
         private void setPostRequestContent(HttpURLConnection conn,
