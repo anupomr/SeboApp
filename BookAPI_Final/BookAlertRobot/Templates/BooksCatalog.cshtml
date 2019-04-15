@@ -1,0 +1,88 @@
+﻿@*@model IEnumerable<SeboProject.Models.Book>*@
+@using SeboProject.Utilities
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@model Pagination<SeboProject.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@if (SignInManager.IsSignedIn(User))
+{
+    <div style="height :80px"></div>
+}
+<h2>Books Catalog</h2>
+
+<table style="width:100%">
+    <tr>
+        <td style="align-content:flex-start">
+            <form asp-action="Index" method="get">
+                <div class="form-actions  no-color">
+
+                    Books Search:  <input type="text" name="SearchString" value="@ViewData["SearchString"]" />
+                    <input type="submit" value="Search" class="btn  btn-default" />  |
+                    <a asp-action="Index">All records</a> | Records Displayed @*@Model.TotalR*@
+
+                </div>
+            </form>
+        </td>
+        <td style="align-content:flex-end">
+            <div>
+                Sort by: @Html.DropDownList("SortBy", new List<SelectListItem>
+{
+new SelectListItem{ Text="Title", Value = "Title" },
+new SelectListItem{ Text="Study Area", Value = "StudyArea" },
+new SelectListItem{ Text="Book Condition", Value = "BookCondition" },
+new SelectListItem{ Text="ISBN", Value = "ISBN" }
+})
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="container">
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3 books-card-cover">
+                <div class="books-card">
+                    <div class="books-poster">
+
+                        @{
+                            if (item.PhotoFileName != null)
+                            {
+                                var base64 = Convert.ToBase64String(item.PhotoFileName);
+                                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                                <img src="@imgsrc" style="max-width:75px; max-height:75px;" />
+                            }
+                        }
+
+                    </div>
+                    <div class="books-title">
+                        @Html.DisplayFor(modelItem => item.Title)<br />
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </div>
+
+                    <div class="books-options">
+                        <a asp-controller="Orders" asp-action="BuyIt" asp-route-id="@item.BookId">Buy It</a>
+                        @*<a asp-action="#" asp-route-id="@item.BookId">Buy It</a> |*@
+                        <a asp-action="BookCatalogDetails" asp-route-id="@item.BookId">Details</a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex - 1)"
+   @*asp-route-currentFilter="@ViewData[" CurrentFilter"]"*@
+   asp-route-currentSearchString="@ViewData["CurrentSearchString"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
