@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:background="@drawable/library_books"
+
+    tools:context=".SellBookActivity"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="26dp"
+        android:textAlignment="center"
+        style="@style/headingOne"
+        android:text="@string/please_fill_book_info_to_sell" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/sellStyle"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextTitle"
+        android:layout_alignEnd="@+id/textView4"
+        android:text="@string/title"
+        android:textAlignment="textEnd" />
+
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editTextDesc"
+        android:layout_marginTop="103dp"
+        android:ems="10"
+        android:inputType="textPersonName"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/sellStyle"
+        android:layout_width="96dp"
+        android:layout_height="19dp"
+        android:layout_alignBaseline="@+id/editTextDesc"
+        android:layout_alignEnd="@+id/textView2"
+        android:text="@string/description"
+        android:textAlignment="textEnd" />
+
+    <EditText
+        android:id="@+id/editTextDesc"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="161dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/sellStyle"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="231dp"
+        android:text="@string/isbn"
+        android:textAlignment="textEnd" />
+
+    <EditText
+        android:id="@+id/editTextIsbn"
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignStart="@+id/editTextTitle"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView5"
+        style="@style/sellStyle"
+        android:layout_width="133dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:text="@string/publisher"
+        android:textAlignment="textEnd" />
+
+    <EditText
+        android:id="@+id/editTextPublisher"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editTextTitle"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView6"
+        style="@style/sellStyle"
+        android:layout_width="129dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="228dp"
+        android:text="@string/edition"
+        android:textAlignment="textEnd" />
+
+    <EditText
+        android:id="@+id/editTextEdition"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignStart="@+id/editTextTitle"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textView7"
+        style="@style/sellStyle"
+        android:layout_width="129dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="176dp"
+        android:text="@string/quantity"
+        android:textAlignment="textEnd" />
+
+    <EditText
+        android:id="@+id/editTextQuantity"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignEnd="@+id/textView"
+        android:ems="10"
+        android:inputType="number" />
+
+
+    <TextView
+        android:id="@+id/textView8"
+        style="@style/sellStyle"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="112dp"
+        android:text="@string/price"
+        android:textAlignment="textEnd" />
+
+    <EditText
+        android:id="@+id/editTextPrice"
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView8"
+        android:layout_alignStart="@+id/editTextTitle"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+
+    <Button
+        android:id="@+id/button"
+        style="@style/staffButtonStyle"
+        android:layout_width="253dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onSend"
+        android:layout_marginBottom="14dp"
+        android:text="Save" />
+</RelativeLayout>
